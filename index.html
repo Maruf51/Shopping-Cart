@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div id="cart-section" class="container cart-section">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minus-button1" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <span id="number1" class="number">1</span>
+                           <button id="plus-button1" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="first-value">1200</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="minus-button2" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <span id="number2" class="number">1</span>
+                           <button id="plus-button2" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$ <span id="second-value">60</span></h5>
+                        <img src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax (5%) :</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$ <span id="sub-total">1260</span></h5>
+                        <h5>$ <span id="tax">63</span></h5>
+                        <h5>$ <span id="total">1260</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button id="checkout-btn" type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <div id="final-message" class="container final-message">
+      <h1 class="text-center">Thank You for Buying the Item.</h1>
+   </div>
+
+
+
+
+   <script>
+      // First Section Plus Button Event
+      document.getElementById('plus-button1').addEventListener('click', function(){
+         const numbers = document.getElementById('number1').innerText;
+         const howMuch = parseFloat(numbers);
+         const totalNumber = howMuch + 1;
+         const number1 = document.getElementById('number1').innerText = totalNumber;
+               
+         const totalValue = number1 * 1200;
+         const totalFirstValuePlus = document.getElementById('first-value').innerText = totalValue;
+         
+         const subTotal = document.getElementById('sub-total').innerText;
+         const subTotalValue = parseFloat(subTotal);
+         const SubTotal = document.getElementById('sub-total').innerText = subTotalValue + 1200;
+
+         const tax = document.getElementById('tax').innerText;
+         const Tax = parseFloat(tax);
+         const taxValue = (1200 * 5) / 100;
+         const TAX = document.getElementById('tax').innerText = Tax + taxValue;
+
+         const total = SubTotal + TAX;
+         document.getElementById('total').innerText = total;
+
+         if(totalNumber > 0){
+            document.getElementById('minus-button1').style.display = "block";
+            document.getElementById('number1').style.marginLeft = "0px";
+         }
+      })
+
+
+      // Second Section Plus Button Event
+      document.getElementById('plus-button2').addEventListener('click', function(){
+         const numbers = document.getElementById('number2').innerText;
+         const howMuch = parseFloat(numbers);
+         const totalNumber = howMuch + 1;
+         const number2 = document.getElementById('number2').innerText = totalNumber;
+
+         const totalValue = number2 * 60;
+         const totalSecondValue = document.getElementById('second-value').innerText = totalValue;
+
+         const subTotal = document.getElementById('sub-total').innerText;
+         const subTotalValue = parseFloat(subTotal);
+         const SubTotal = document.getElementById('sub-total').innerText = subTotalValue + 60;
+
+         const tax = document.getElementById('tax').innerText;
+         const Tax = parseFloat(tax);
+         const taxValue = (60 * 5) / 100;
+         const TAX = document.getElementById('tax').innerText = Tax + taxValue;
+
+         const total = SubTotal + TAX;
+         document.getElementById('total').innerText = total;
+
+         if(totalNumber > 0){
+            document.getElementById('minus-button2').style.display = "block";
+            document.getElementById('number2').style.marginLeft = "0px";
+         }
+      })
+
+
+      // First Section Minus Button Event
+      document.getElementById('minus-button1').addEventListener('click', function(){
+         const numbers = document.getElementById('number1').innerText;
+         const howMuch = parseFloat(numbers);
+         const totalNumber = howMuch - 1;
+         const number1 = document.getElementById('number1').innerText = totalNumber;
+               
+         const totalValue = number1 * 1200;
+         const totalFirstValueMinus = document.getElementById('first-value').innerText = totalValue;
+
+         const subTotal = document.getElementById('sub-total').innerText;
+         const subTotalValue = parseFloat(subTotal);
+         const SubTotal = document.getElementById('sub-total').innerText = subTotalValue - 1200;
+
+         const tax = document.getElementById('tax').innerText;
+         const Tax = parseFloat(tax);
+         const taxValue = (1200 * 5) / 100;
+         const TAX = document.getElementById('tax').innerText = Tax - taxValue;
+
+         const total = SubTotal + TAX;
+         document.getElementById('total').innerText = total;
+
+         if(totalNumber <= 0){
+            document.getElementById('minus-button1').style.display = "none";
+            document.getElementById('number1').style.marginLeft = "40px";
+         }
+      })
+
+
+      // Second Section Minus Button Event
+      document.getElementById('minus-button2').addEventListener('click', function(){
+         const numbers = document.getElementById('number2').innerText;
+         const howMuch = parseFloat(numbers);
+         const totalNumber = howMuch - 1;
+         const number2 = document.getElementById('number2').innerText = totalNumber;
+
+         const totalValue = number2 * 60;
+         const totalSecondValue = document.getElementById('second-value').innerText = totalValue;
+
+         const subTotal = document.getElementById('sub-total').innerText;
+         const subTotalValue = parseFloat(subTotal);
+         const SubTotal = document.getElementById('sub-total').innerText = subTotalValue - 60;
+
+         const tax = document.getElementById('tax').innerText;
+         const Tax = parseFloat(tax);
+         const taxValue = (60 * 5) / 100;
+         const TAX = document.getElementById('tax').innerText = Tax - taxValue;
+
+         const total = SubTotal + TAX;
+         document.getElementById('total').innerText = total;
+
+         if(totalNumber <= 0){
+            document.getElementById('minus-button2').style.display = "none";
+            document.getElementById('number2').style.marginLeft = "40px";
+         }
+      })
+
+
+      // Checkout Button Handler
+      document.getElementById('checkout-btn').addEventListener('click', function(){
+         alert('Your Transaction has been Completed!');
+         document.getElementById('cart-section').style.display = "none";
+         document.getElementById('final-message').style.display = "block";
+      })
+   </script>
+</body>
+
+</html>
