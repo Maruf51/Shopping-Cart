@@ -59,7 +59,7 @@ body{
     font-weight: 600;
     padding: 0 15px;
     background: #e6e6e6;
-    border-radius: 5px;
+	border-radius: 5px;
 }
 
 .cart-section {
@@ -75,4 +75,24 @@ body{
 
 .final-message h1 {
 	padding: 100px;
+}
+
+#changes {
+	color: blue;
+	font-size: 25px;
+	font-weight: 500;
+	display: none;
+}
+
+#changes:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#close2 {
+	display: none;
+}
+
+#close {
+	display: none;
 }
